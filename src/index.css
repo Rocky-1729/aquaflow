@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+/* Eye-friendly Dark Theme Global Styling */
+html {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #030712; /* Slate-950 */
+  color: #f3f4f6; /* Slate-100 */
+}
+
+/* Auto-adaptive Styles for Dashboard Cards and Layouts */
+.dark .bg-white {
+  background-color: #0f172a !important; /* Slate-900 */
+}
+
+.dark .bg-slate-50 {
+  background-color: #030712 !important; /* Slate-950 */
+}
+
+.dark .bg-slate-100 {
+  background-color: #1e293b !important; /* Slate-800 */
+}
+
+.dark .bg-slate-150 {
+  background-color: #0f172a !important; /* Slate-900 */
+}
+
+.dark .bg-sky-50 {
+  background-color: rgba(14, 165, 233, 0.1) !important; /* Sky-500 with opacity */
+}
+
+.dark .bg-sky-50\/50 {
+  background-color: rgba(14, 165, 233, 0.05) !important;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.1) !important; /* Emerald-500 with opacity */
+}
+
+.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.1) !important; /* Amber-500 with opacity */
+}
+
+.dark .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.1) !important; /* Red-500 with opacity */
+}
+
+/* Borders */
+.dark .border-slate-100 {
+  border-color: #1e293b !important; /* Slate-800 */
+}
+
+.dark .border-slate-150, .dark .border-slate-200 {
+  border-color: #1e293b !important; /* Slate-800 */
+}
+
+.dark .border-slate-205, .dark .border-slate-250 {
+  border-color: #334155 !important; /* Slate-700 */
+}
+
+.dark .border-sky-100 {
+  border-color: rgba(14, 165, 233, 0.2) !important;
+}
+
+.dark .border-emerald-250, .dark .border-emerald-200 {
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+.dark .border-amber-200 {
+  border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* Typography Color Overrides */
+.dark .text-slate-900 {
+  color: #f8fafc !important; /* Slate-50 */
+}
+
+.dark .text-slate-850, .dark .text-slate-800 {
+  color: #f1f5f9 !important; /* Slate-100 */
+}
+
+.dark .text-slate-700 {
+  color: #e2e8f0 !important; /* Slate-200 */
+}
+
+.dark .text-slate-600 {
+  color: #cbd5e1 !important; /* Slate-300 */
+}
+
+.dark .text-slate-500, .dark .text-slate-450 {
+  color: #94a3b8 !important; /* Slate-400 */
+}
+
+.dark .text-slate-400 {
+  color: #64748b !important; /* Slate-500 */
+}
+
+/* Interactive form inputs */
+.dark input, .dark select, .dark textarea {
+  background-color: #030712 !important; /* Slate-950 */
+  color: #f3f4f6 !important;
+  border-color: #1e293b !important;
+}
+
+.dark input:focus, .dark select:focus, .dark textarea:focus {
+  border-color: #0ea5e9 !important; /* Sky-500 */
+  outline: 2px solid rgba(14, 165, 233, 0.2) !important;
+}
+
+/* Adaptive Map Contrast */
+.dark img[src*="maps"], .dark iframe[src*="maps"] {
+  filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* Shadows */
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+}

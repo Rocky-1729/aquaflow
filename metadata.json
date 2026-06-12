@@ -1,0 +1,6 @@
+{
+  "name": "AquaFlow",
+  "description": "Premium commercial water delivery platform featuring real-time spatial logistics tracking, role-based controls, smart recurring subscription contracts, and instant notifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
