@@ -30,3 +30,28 @@ AquaFlow is a modern subscription-based water delivery platform that connects cu
 - GPS Live Tracking
 - PostgreSQL Database
 - Mobile App
+## 📸 Screenshots
+
+### 🔐 Login Page
+
+![Login Page](./srceenshots/login_&_sing_up_page.png)
+
+---
+
+### 👤 Customer Dashboard
+
+![Customer Dashboard](./srceenshots/customer__dashboard.png)
+
+---
+
+### 🏢 Owner Dashboard
+
+![Owner Dashboard](./srceenshots/owner_dashboard.png)
+
+---
+
+### 🚚 Delivery_Agent Dashboard
+
+![Delivery Dashboard](./srceenshots/delivery_Agent_dashboard.png)
+
+
