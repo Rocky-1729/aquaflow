@@ -9,7 +9,7 @@ import { io as socketIO, Socket } from 'socket.io-client';
 import {
   Droplets, Trash2, Plus, Minus, Compass, Truck, MapPin, Navigation,
   TrendingUp, User, Users, CheckCircle, Clock, XCircle, 
-  Lock, Mail, Phone, Shield, DollarSign, Map, Award, 
+  Lock, Mail, Phone, Shield, IndianRupee, Map, Award, 
   AlertCircle, ExternalLink, Send, Search, FileText, ChevronRight,
   UserPlus, Eye, EyeOff, LayoutDashboard, Settings, History, Info
 } from 'lucide-react';
@@ -227,7 +227,7 @@ export default function App() {
     // Pricing update broadcast
     socket.on('pricing_updated', (data: any) => {
       setPricing(data);
-      addToast('Pricing Updated', `Water can unit rates were set to $${data.costPerCan.toFixed(2)}/can by management.`, 'warning');
+      addToast('Pricing Updated', `Water can unit rates were set to ₹${data.costPerCan.toFixed(2)}/can by management.`, 'warning');
     });
 
     // Notify of new orders
@@ -639,7 +639,7 @@ export default function App() {
       });
 
       if (res.ok) {
-        addToast('Pricing System Reset', `Pricing updated instantly to $${newPricingRate.toFixed(2)} per unit.`, 'success');
+        addToast('Pricing System Reset', `Pricing updated instantly to ₹${newPricingRate.toFixed(2)} per unit.`, 'success');
         fetchOwnerData();
       } else {
         const err = await res.json();
@@ -1346,7 +1346,7 @@ export default function App() {
                       <p className="text-[10px] text-sky-600 font-mono mt-0.5">Capacity: 20 Liters Standard</p>
                     </div>
                     <span className="text-xs font-extrabold text-sky-700 bg-white/80 px-2 py-1 rounded border border-sky-100 font-mono">
-                      ${pricing.costPerCan.toFixed(2)}/can
+                      ₹{pricing.costPerCan.toFixed(2)}/can
                     </span>
                   </div>
 
@@ -1445,7 +1445,7 @@ export default function App() {
                   <div className="border-t border-slate-100 pt-3 flex justify-between items-center text-xs font-mono">
                     <span className="text-slate-500 font-sans">Grand Total:</span>
                     <span className="text-base font-extrabold text-slate-900" id="can-pricing-sum">
-                      ${(quantity * pricing.costPerCan).toFixed(2)}
+                      ₹{(quantity * pricing.costPerCan).toFixed(2)}
                     </span>
                   </div>
 
@@ -1554,7 +1554,7 @@ export default function App() {
                             </p>
                             <p className="flex justify-between">
                               <span className="text-slate-500 font-sans">Total Bill:</span>
-                              <span className="font-mono text-sky-600 font-bold">${trackingOrder.price.toFixed(2)}</span>
+                              <span className="font-mono text-sky-600 font-bold">₹{trackingOrder.price.toFixed(2)}</span>
                             </p>
                           </div>
                         </div>
@@ -1648,7 +1648,7 @@ export default function App() {
                                     </div>
                                   </td>
                                   <td className="py-3.5 font-mono text-sky-600 font-extrabold">
-                                    ${o.price.toFixed(2)}
+                                    ₹{o.price.toFixed(2)}
                                     <div className="text-[9px] text-slate-400 font-sans font-normal uppercase tracking-wide mt-0.5">
                                       {o.paymentMethod || 'COD'}
                                     </div>
@@ -1899,7 +1899,7 @@ export default function App() {
                                                       />
                                                       <div className="text-[11px]">
                                                         <span className="text-[9px] uppercase font-mono font-extrabold text-indigo-700 select-all block">UPI ID: {paymentConfig?.upiId || 'aquaflow@ybl'}</span>
-                                                        <p className="text-slate-650 mt-0.5 leading-tight">Settle ${o.price.toFixed(2)} externally on your payment app, then submit UTR proof below.</p>
+                                                        <p className="text-slate-650 mt-0.5 leading-tight">Settle ₹{o.price.toFixed(2)} externally on your payment app, then submit UTR proof below.</p>
                                                       </div>
                                                     </div>
 
@@ -1971,9 +1971,9 @@ export default function App() {
                                                       Reference UTR code: <strong>{o.utrNumber}</strong>.<br/>
                                                       Submitted receipt:
                                                     </p>
-                                                    {o.screenshot && (
+                                                    {o.paymentScreenshot && (
                                                       <div className="mt-2 text-center">
-                                                        <img src={o.screenshot} alt="Submitted receipt" referrerPolicy="no-referrer" className="mx-auto h-20 rounded border mt-1 shadow-sm object-cover" />
+                                                        <img src={o.paymentScreenshot} alt="Submitted receipt" referrerPolicy="no-referrer" className="mx-auto h-20 rounded border mt-1 shadow-sm object-cover" />
                                                       </div>
                                                     )}
                                                     <p className="text-[9px] text-slate-450 mt-1 italic">
@@ -2000,7 +2000,7 @@ export default function App() {
                                             <span>Invoice receipt:</span>
                                             <a
                                               href={`data:text/plain;charset=utf-8,${encodeURIComponent(
-                                                `=== \nAQUAFLOW COMMERCIAL BILL - TAX INVOICE \n===\n\nOrder ID: ${o.id}\nRegistered On: ${new Date(o.createdAt).toLocaleString()}\nTarget Delivery Date: ${o.deliveryDate || 'Standard Scheduled'}\nDelivery Slot: ${o.deliveryTimeSlot || 'Not Specified'}\nVolume can(s): ${o.quantity} Cans\nItem Type: 20 Liters Purified Water Can\nPackage Rate: $${pricing.costPerCan.toFixed(2)}/can\nInvoice Total: $${o.price.toFixed(2)}\nForm of payment: ${o.paymentMethod || 'COD'}\nAddress of Shipment: ${o.userAddress}\nStatus: ${o.status}\n\nThank you for choosing AquaFlow!\n`
+                                                `=== \nAQUAFLOW COMMERCIAL BILL - TAX INVOICE \n===\n\nOrder ID: ${o.id}\nRegistered On: ${new Date(o.createdAt).toLocaleString()}\nTarget Delivery Date: ${o.deliveryDate || 'Standard Scheduled'}\nDelivery Slot: ${o.deliveryTimeSlot || 'Not Specified'}\nVolume can(s): ${o.quantity} Cans\nItem Type: 20 Liters Purified Water Can\nPackage Rate: ₹${pricing.costPerCan.toFixed(2)}/can\nInvoice Total: ₹${o.price.toFixed(2)}\nForm of payment: ${o.paymentMethod || 'COD'}\nAddress of Shipment: ${o.userAddress}\nStatus: ${o.status}\n\nThank you for choosing AquaFlow!\n`
                                               )}`}
                                               download={`Invoice-AquaFlow-${o.id}.abc.txt`}
                                               className="text-sky-600 font-bold hover:underline flex items-center gap-1 bg-sky-50 px-2 py-0.5 rounded border border-sky-100"
@@ -2071,7 +2071,7 @@ export default function App() {
 
                 <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden flex flex-col justify-between" id="kpi-revenue">
                   <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest font-mono">Delivered Rev</span>
-                  <p className="text-2.5xl font-extrabold text-emerald-600 font-mono leading-none mt-2">${ownerStats.revenue.toFixed(2)}</p>
+                  <p className="text-2.5xl font-extrabold text-emerald-600 font-mono leading-none mt-2">₹{ownerStats.revenue.toFixed(2)}</p>
                   <p className="text-[9px] text-emerald-400 mt-2 font-semibold">Total Revenue</p>
                 </div>
 
@@ -2128,7 +2128,7 @@ export default function App() {
                               </div>
                               <div>
                                 <span className="text-[9px] text-slate-400 block font-sans">EXPECTED SETTLEMENT</span>
-                                <span className="font-bold text-emerald-700">${o.price.toFixed(2)} ({o.paymentMethod})</span>
+                                <span className="font-bold text-emerald-700">₹{o.price.toFixed(2)} ({o.paymentMethod})</span>
                               </div>
                             </div>
 
@@ -2188,9 +2188,9 @@ export default function App() {
                           {/* Preview screenshot */}
                           <div className="md:col-span-5 bg-white p-2.5 rounded-lg border border-slate-200 flex flex-col items-center justify-center space-y-1 text-center">
                             <span className="text-[9px] uppercase font-mono font-bold text-slate-400 block">Uploaded Image Proof</span>
-                            {o.screenshot ? (
+                            {o.paymentScreenshot ? (
                               <img
-                                src={o.screenshot}
+                                src={o.paymentScreenshot}
                                 alt="Proof screenshot"
                                 referrerPolicy="no-referrer"
                                 className="h-32 w-full object-contain rounded border border-slate-100 shadow-sm mt-1"
@@ -2201,7 +2201,7 @@ export default function App() {
                               </div>
                             )}
                             <a 
-                              href={o.screenshot} 
+                              href={o.paymentScreenshot} 
                               target="_blank" 
                               rel="noreferrer" 
                               className="text-[10px] text-sky-650 font-bold hover:underline mt-1 block"
@@ -2328,14 +2328,14 @@ export default function App() {
                     <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-155 flex items-center justify-between">
                       <span className="text-xs text-slate-600 font-mono">Current Base Rate:</span>
                       <strong className="text-base font-extrabold text-slate-900 font-mono">
-                        ${pricing.costPerCan.toFixed(2)} / Can
+                        ₹{pricing.costPerCan.toFixed(2)} / Can
                       </strong>
                     </div>
 
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 font-mono">Update Price per Can</label>
                       <div className="relative">
-                        <DollarSign className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+                        <IndianRupee className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
                         <input
                           type="number"
                           step="0.01"
@@ -2483,7 +2483,7 @@ export default function App() {
                                   {o.userAddress}
                                 </td>
                                 <td className="py-3 font-bold text-slate-700">
-                                  {o.quantity} Fresh Cans (${o.price.toFixed(2)})
+                                  {o.quantity} Fresh Cans (₹{o.price.toFixed(2)})
                                 </td>
                                 <td className="py-3">
                                   <motion.span
@@ -2621,7 +2621,7 @@ export default function App() {
                                 {o.userAddress}
                               </td>
                               <td className="py-3.5 font-mono text-slate-700 font-bold">
-                                {o.quantity} Cans (${o.price.toFixed(2)})
+                                {o.quantity} Cans (₹{o.price.toFixed(2)})
                               </td>
                               <td className="py-3.5 text-zinc-400 font-mono">
                                 {new Date(o.createdAt).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
@@ -3002,7 +3002,7 @@ export default function App() {
                               <MapPin className="h-3.5 w-3.5 text-slate-400 shrink-0" /> {o.userAddress}
                             </p>
                             <p className="text-[11px] text-sky-600 font-bold font-mono mt-0.5">
-                              {o.quantity} fresh cans on delivery • ${o.price.toFixed(2)}
+                              {o.quantity} fresh cans on delivery • ₹{o.price.toFixed(2)}
                             </p>
                           </div>
 
