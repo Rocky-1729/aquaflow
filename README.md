@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# AquaFlow
 
-# Run and deploy your AI Studio app
+AquaFlow is a modern water delivery management platform designed for customers, water vendors, and delivery agents.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/9bf95db9-35ea-4019-b9ab-1f1e3962abd4
+- Real-time order tracking
+- JWT Authentication
+- Customer Dashboard
+- Owner Dashboard
+- Delivery Agent Dashboard
+- Socket.IO Notifications
+- Subscription Plans
+- QR Code Payments
+- Delivery Scheduling
+- Payment Verification
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- React
+- TypeScript
+- Vite
+- Express.js
+- Socket.IO
+- JWT
+- Node.js
 
+## Future Enhancements
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Google Authentication
+- WhatsApp Notifications
+- SMS Notifications
+- GPS Live Tracking
+- PostgreSQL Database
+- Mobile App
