@@ -1,20 +1,17 @@
-# AquaFlow
+# 🚰 AquaFlow
 
-AquaFlow is a modern water delivery management platform designed for customers, water vendors, and delivery agents.
+AquaFlow is a modern subscription-based water delivery platform that connects customers, vendors, and delivery agents through real-time tracking, notifications, and delivery management.
 
 ## Features
 
-- Real-time order tracking
-- JWT Authentication
-- Customer Dashboard
-- Owner Dashboard
-- Delivery Agent Dashboard
-- Socket.IO Notifications
-- Subscription Plans
-- QR Code Payments
-- Delivery Scheduling
-- Payment Verification
-
+- 🔐 JWT Authentication
+- 📍 Real-Time Delivery Tracking
+- 🔔 Instant Notifications
+- 👥 Role-Based Dashboards
+- 💳 QR Code Payment Verification
+- 📅 Scheduled Deliveries
+- 📦 Subscription Management
+- 🚚 Delivery Agent Management
 ## Tech Stack
 
 - React
